@@ -151,6 +151,7 @@ public final class io/ktor/http/ContentType$Application {
 	public final fun getGZip ()Lio/ktor/http/ContentType;
 	public final fun getJavaScript ()Lio/ktor/http/ContentType;
 	public final fun getJson ()Lio/ktor/http/ContentType;
+	public final fun getJsonHal ()Lio/ktor/http/ContentType;
 	public final fun getOctetStream ()Lio/ktor/http/ContentType;
 	public final fun getPdf ()Lio/ktor/http/ContentType;
 	public final fun getProblemJson ()Lio/ktor/http/ContentType;

@@ -66,10 +66,35 @@ class JsonFeature internal constructor(
          */
         @KtorExperimentalAPI
         var acceptContentTypes: List<ContentType> = listOf(ContentType.Application.Json)
+            @Deprecated(
+                "Use accept() function instead.",
+                replaceWith = ReplaceWith("accept(newList)")
+            )
             set(newList) {
                 require(newList.isNotEmpty()) { "At least one content type should be provided to acceptContentTypes" }
                 field = newList
             }
+
+        /**
+         * Internal flag that means that [accept] method has been already called.
+         */
+        private var acceptAlreadyCalled = false
+
+        /**
+         * Adds accepted content types. Be aware that [ContentType.Application.Json] accepted by default is removed from
+         * the list if you use this function to provide accepted content types.
+         * It also affects `Accept` request header value.
+         */
+        @KtorExperimentalAPI
+        fun accept(vararg contentTypes: ContentType) {
+            @Suppress("DEPRECATION")
+            if (!acceptAlreadyCalled) {
+                acceptAlreadyCalled = true
+                acceptContentTypes = contentTypes.asList()
+            } else {
+                acceptContentTypes += contentTypes
+            }
+        }
     }
 
     /**

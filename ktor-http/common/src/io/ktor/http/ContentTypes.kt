@@ -121,6 +121,7 @@ class ContentType private constructor(val contentType: String, val contentSubtyp
         val Any = ContentType("application", "*")
         val Atom = ContentType("application", "atom+xml")
         val Json = ContentType("application", "json")
+        val JsonHal = ContentType("application", "json+hal")
         val JavaScript = ContentType("application", "javascript")
         val OctetStream = ContentType("application", "octet-stream")
         val FontWoff = ContentType("application", "font-woff")

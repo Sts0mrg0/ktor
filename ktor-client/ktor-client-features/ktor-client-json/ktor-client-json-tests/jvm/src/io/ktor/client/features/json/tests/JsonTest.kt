@@ -113,7 +113,7 @@ abstract class JsonTest : TestWithKtor() {
     @Test
     fun testCustomContentTypes() = testWithEngine(CIO) {
         configCustomContentTypeClient {
-            acceptContentTypes = listOf(customContentType)
+            accept(customContentType)
         }
 
         test { client ->
@@ -151,7 +151,8 @@ abstract class JsonTest : TestWithKtor() {
     @Test
     fun testCustomContentTypesMultiple() = testWithEngine(CIO) {
         configCustomContentTypeClient {
-            acceptContentTypes = listOf(ContentType.Application.Json, customContentType)
+            accept(ContentType.Application.Json)
+            accept(customContentType)
         }
 
         test { client ->
@@ -169,7 +170,7 @@ abstract class JsonTest : TestWithKtor() {
     @Test
     fun testCustomContentTypesWildcard() = testWithEngine(CIO) {
         configCustomContentTypeClient {
-            acceptContentTypes = listOf(ContentType.Application.Any)
+            accept(ContentType.Application.Any)
         }
 
         test { client ->
